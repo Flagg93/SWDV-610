@@ -1,6 +1,6 @@
 def is_multiple(n,m):
     #true is n = mi where i is an integer
-    return m%n==0
+    return n%m==0
     
 def getInput(label):
     out = None
