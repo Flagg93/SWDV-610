@@ -56,6 +56,7 @@ class Bank:
         if self.HasBoat():
             outputString = outputString + ", Boat Docked"
         return outputString
+    
 #fromBank is the bank we start on this pass, to is where we're going this pass, dest is where we want to end up, start is where we first started
 def findPassengers(toBank, fromBank, destBank, startBank):
     sendM = 0
@@ -88,6 +89,7 @@ def main():
             findPassengers(rightBank, leftBank, rightBank, leftBank)
         else:
             findPassengers(leftBank, rightBank, rightBank, leftBank)
+            
     print(leftBank.Output())
     print(rightBank.Output())
 
