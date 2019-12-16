@@ -31,6 +31,22 @@ def randomMAC():
     mac = "{0}{1}-{2}{3}-{4}{5}-{6}{7}-{8}{9}-{10}{11}".format(randChar(),randChar(),randChar(),randChar(),randChar(),randChar(),randChar(),randChar(),randChar(),randChar(),randChar(),randChar())
     return mac
 
+def addSubLocations(location, numLocations):
+    print(location.Name)
+    manualEntry_L = bool(int(input("Would you like to manually enter sublocation names?(1:Yes, 0:No): ")))
+    for x in range(numLocations):
+        locName = "{0}_{1}".format(location.Name, x)
+        if manualEntry_L:
+            locName = input("Please enter a location name:")
+        location.AddSubLocation(locName)
+
+    for x in location.SubLocations:
+        numLocations = int(input("How Many SubLocations Does {0} have?: ".format(x.Name)))
+        if numLocations > 0:
+            addSubLocations(x,numLocations)
+
+
+
 def main():
     companyName = input("Enter a Company Name: ")
     company = Company(companyName)
@@ -41,6 +57,11 @@ def main():
         if manualEntry_L:
             locName = input("Please enter a location name:")
         company.AddLocation(locName)
+
+    for x in company.Locations:
+        numSubLocations = int(input("How Many SubLocations Does {0} have?: ".format(x.Name)))
+        if numSubLocations > 0:
+            addSubLocations(x,numSubLocations)
 
     for loc in company.Locations:
         numAssets = int(input("How Many Assets at location {0}?: ".format(loc.Name)))

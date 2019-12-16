@@ -3,6 +3,7 @@ class Location:
     def __init__(self, name):
         self.Name = name
         self.Assets = list()
+        self.SubLocations = list()
     
     def GetAllAssets(self):
         assets = list()
@@ -15,4 +16,6 @@ class Location:
         if index != None:
             return self.Assets[index]
 
+    def AddSubLocation(self, name):
+        self.SubLocations.append(Location(name))
 
